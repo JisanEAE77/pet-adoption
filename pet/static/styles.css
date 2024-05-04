@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.user-menu {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.user-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-menu ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.user-menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.user-menu ul li:last-child {
+    margin-right: 0;
+}
+
+.logo svg {
+    width: 150px; /* Adjust the size of the SVG */
+    fill: white;
+}  

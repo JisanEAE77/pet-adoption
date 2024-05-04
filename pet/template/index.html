@@ -1,0 +1,76 @@
+{% load static %}
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'index.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Our Pet Adoption Website</h1>
+        <p>Find your new furry friend today!</p>
+        <a href="#adoption-posts" class="btn">Browse Adoptions</a>
+    </div>
+</div>
+
+<section id="adoption-posts" class="adoption-posts">
+    <h2>Latest Adoption Posts</h2>
+    <div class="adoption-cards">
+        <!-- Adoption post cards -->
+        <!-- Sample card -->
+        <div class="adoption-card">
+            <img src="https://via.placeholder.com/300" alt="Pet Image">
+            <div class="card-content">
+                <h3>Adorable Puppy Needs a Home</h3>
+                <p>Age: 1 year | Gender: Female | Breed: Labrador Retriever</p>
+                <a href="#" class="btn">View Details</a>
+            </div>
+        </div>
+        <!-- Repeat the above adoption card structure for each post -->
+        <!-- Limit the number of cards to 10 -->
+    </div>
+    <a href="#" class="btn see-more">See More</a>
+</section>
+
+<section class="pet-care-section">
+    <div class="container">
+        <h2>Pet Care and Adoption</h2>
+        <div class="pet-care-info">
+            <div class="pet-care-item">
+                <img src="https://via.placeholder.com/150" alt="Pet Care Image">
+                <h3>Tips for Adopting a Pet</h3>
+                <p>Learn how to adopt a pet and what to expect during the process.</p>
+            </div>
+            <div class="pet-care-item">
+                <img src="https://via.placeholder.com/150" alt="Pet Care Image">
+                <h3>Pet Care Essentials</h3>
+                <p>Discover essential tips for taking care of your new furry friend.</p>
+            </div>
+            <div class="pet-care-item">
+                <img src="https://via.placeholder.com/150" alt="Pet Care Image">
+                <h3>Preparing Your Home</h3>
+                <p>Get your home ready for your new pet with these helpful suggestions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="sitemap">
+        <a href="#">Home</a>
+        <a href="#">Browse Pets</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 Your Pet Adoption Website. All rights reserved.</p>
+    </div>
+</footer>
+
+{% endblock %}

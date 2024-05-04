@@ -43,9 +43,9 @@ class Pet(models.Model):
         ('special_needs', 'Special Needs'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="poster")
     is_adopted = models.BooleanField(default=False)
-    adopted_by = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    adopted_by = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="adopter")
     species = models.CharField(max_length=20, choices=SPECIES_CHOICES)
     name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100, blank=True, null=True)

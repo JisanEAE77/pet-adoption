@@ -1,0 +1,56 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pet Adoption{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="150" fill="white">
+            <path d="M256 56c-79.53 0-144 64.47-144 144s144 232 144 232 144-152 144-232S335.53 56 256 56zm0 208c-39.76 0-72-32.24-72-72s32.24-72 72-72 72 32.24 72 72-32.24 72-72 72z"/>
+          </svg>        
+        </svg>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Browse Pets</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="user-menu">
+        <ul>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+        </ul>
+    </div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<footer class="footer">
+    <div class="sitemap">
+        <a href="#">Home</a>
+        <a href="#">Browse Pets</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 Your Pet Adoption Website. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

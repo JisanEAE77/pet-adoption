@@ -1,0 +1,139 @@
+.hero {
+    background-image: url('https://via.placeholder.com/1500x600'); /* Replace with your hero image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+/* Style for adoption posts section */
+.adoption-posts {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.adoption-posts h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.adoption-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.adoption-card {
+    width: 300px;
+    margin: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.adoption-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Style for see more button */
+.see-more {
+    display: block;
+    margin: 40px auto;
+    font-size: 18px;
+}
+
+/* Style for pet care section */
+.pet-care-section {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.pet-care-section h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pet-care-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pet-care-item {
+    width: 300px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.pet-care-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Style for footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.sitemap {
+    margin-bottom: 10px;
+}
+
+.sitemap a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Button style */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
