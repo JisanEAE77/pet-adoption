@@ -39,3 +39,6 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('/')
+    
+def singlepet(request, *args, **kwargs):
+    return render(request, "singlepet.html")

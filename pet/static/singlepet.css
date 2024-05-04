@@ -1,0 +1,75 @@
+/* CSS for pet details page */
+.pet-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.pet-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pet-info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table-container {
+    flex: 1;
+    overflow-x: auto;
+}
+
+.table-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.pet-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pet-table th, .pet-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.pet-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pet-image {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pet-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}

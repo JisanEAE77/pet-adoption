@@ -1,61 +1,84 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+/* CSS for header */
+.header {
+    background-color: #4CAF90; /* Light green */
+    color: #fff;
+    padding: 20px 0;
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-nav ul {
-    list-style-type: none;
+.logo img {
+    height: 50px;
+}
+
+.nav-menu {
+    list-style: none;
     margin: 0;
+    margin-left: 25px;
     padding: 0;
+    text-align: center; /* Center the menu */
 }
 
-nav ul li {
-    display: inline;
+.nav-menu li {
+    display: inline-block;
     margin-right: 20px;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.user-menu {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-.user-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.user-menu ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-.user-menu ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.user-menu ul li:last-child {
+.nav-menu li:last-child {
     margin-right: 0;
 }
 
-.logo svg {
-    width: 150px; /* Adjust the size of the SVG */
-    fill: white;
-}  
+.nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #66c2a5; /* Light green */
+}
+
+.user-menu {
+    margin-left: auto; /* Align to the right */
+}
+
+.user-menu .btn {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #4CAF90; /* Light green */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.user-menu .btn:hover {
+    background-color: #f0f0f0;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.sitemap {
+    margin-bottom: 10px;
+}
+
+.sitemap a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.sitemap a:hover {
+    color: #66c2a5; /* Light green */
+}
