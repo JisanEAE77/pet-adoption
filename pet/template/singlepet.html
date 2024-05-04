@@ -1,0 +1,125 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Pet Adoption Details{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'singlepet.css' %}">
+{% endblock %}
+{% block content %}
+<div class="pet-details-container">
+    <h1 class="pet-title">{{ pet.name }}</h1>
+    <div class="pet-info">
+        <div class="table-container">
+            <h2 class="table-title">Pet Details</h2>
+            <table class="pet-table">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Species</strong></td>
+                        <td>{{ pet.get_species_display }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Breed</strong></td>
+                        <td>{{ pet.breed }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Age</strong></td>
+                        <td>{{ pet.age }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gender</strong></td>
+                        <td>{{ pet.get_gender_display }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Size</strong></td>
+                        <td>{{ pet.get_size_display }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Behavior</strong></td>
+                        <td>{{ pet.get_behavior_display }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>{{ pet.description }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>{{ pet.location }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vaccinated</strong></td>
+                        <td>{{ pet.vaccinated }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dewormed</strong></td>
+                        <td>{{ pet.dewormed }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Neutered/Spayed</strong></td>
+                        <td>{{ pet.neutered_spayed }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microchipped</strong></td>
+                        <td>{{ pet.microchipped }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friendly with Kids</strong></td>
+                        <td>{{ pet.friendly_with_kids }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friendly with Dogs</strong></td>
+                        <td>{{ pet.friendly_with_dogs }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friendly with Cats</strong></td>
+                        <td>{{ pet.friendly_with_cats }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Special Needs</strong></td>
+                        <td>{{ pet.special_needs }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adoption Fee</strong></td>
+                        <td>{{ pet.adoption_fee }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Color</strong></td>
+                        <td>{{ pet.color }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coat Length</strong></td>
+                        <td>{{ pet.coat_length }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eye Color</strong></td>
+                        <td>{{ pet.eye_color }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weight</strong></td>
+                        <td>{{ pet.weight }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Health Status</strong></td>
+                        <td>{{ pet.get_health_status_display }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pet-image">
+            <img src="{{ pet.image.url }}" alt="Pet Image">
+        </div>
+    </div>
+    {% if pet.is_adopted %}
+    <p><strong>Status:</strong> Adopted</p>
+    <p><strong>Adopted By:</strong> {{ pet.adopted_by.username }}</p>
+    {% else %}
+    <p><strong>Status:</strong> Available for Adoption</p>
+    <a href="#" class="btn">Adopt {{ pet.name }}</a>
+    {% endif %}
+</div>
+{% endblock %}

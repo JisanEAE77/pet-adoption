@@ -24,6 +24,7 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="Home"),
+    path('pet', singlepet, name="Single-Pet"),
 ]
 
 if settings.DEBUG:
