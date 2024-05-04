@@ -1,5 +1,5 @@
 from django import forms
-from .models import CustomUser
+from .models import CustomUser,Pet
 
 class CustomUserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -23,3 +23,20 @@ class CustomUserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class PetForm(forms.ModelForm):
+    class Meta:
+        model = Pet
+        fields = [
+            'species', 'name', 'breed', 'age', 'gender', 'size', 'behavior',
+            'description', 'photo', 'location', 'vaccinated', 'dewormed',
+            'neutered_spayed', 'microchipped', 'friendly_with_kids',
+            'friendly_with_dogs', 'friendly_with_cats', 'special_needs',
+            'adoption_fee', 'color', 'coat_length', 'eye_color', 'weight',
+            'health_status',
+        ]
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'special_needs': forms.Textarea(attrs={'rows': 2}),
+        }

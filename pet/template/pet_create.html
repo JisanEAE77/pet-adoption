@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create{% endblock %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'index.css' %}">
+<style>
+    input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+textarea,
+select {
+    border: 1px solid #000; /* Change border color to black */
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">Create Pet</h1>
+    <form method="post" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+            <ul>
+                {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% for field in form %}
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="{{ field.id_for_label }}">
+                {{ field.label }}
+            </label>
+            {{ field }}
+            {% if field.errors %}
+            <div class="text-red-500 text-sm mt-1">
+                {% for error in field.errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="flex items-center justify-center">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

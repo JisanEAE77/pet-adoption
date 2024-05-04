@@ -1,8 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.forms import  AuthenticationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, logout
+
+from .models import Pet
+from .forms import PetForm
 
 def index(request, *args, **kwargs):
     return render(request, "index.html")
@@ -42,3 +45,35 @@ def logout_view(request):
     
 def singlepet(request, *args, **kwargs):
     return render(request, "singlepet.html")
+
+def pet_create(request):
+    if request.method == 'POST':
+        form = PetForm(request.POST, request.FILES)
+        if form.is_valid():
+            pet = form.save(commit=False)
+            pet.user = request.user
+            pet.save()
+            # return redirect('pet_detail', pk=pet.pk)
+            return redirect('/')
+    else:
+        form = PetForm()
+    return render(request, 'pet_create.html', {'form': form})
+
+def pet_update(request, pk):
+    pet = get_object_or_404(Pet, pk=pk, user=request.user)
+    if request.method == 'POST':
+        form = PetForm(request.POST, request.FILES, instance=pet)
+        if form.is_valid():
+            form.save()
+            # return redirect('pet_detail', pk=pet.pk)
+            return redirect('/')
+    else:
+        form = PetForm(instance=pet)
+    return render(request, 'pet_update.html', {'form': form})
+
+def pet_delete(request, pk):
+    pet = get_object_or_404(Pet, pk=pk, user=request.user)
+    if request.method == 'POST':
+        pet.delete()
+        return redirect('/')
+    return render(request, 'pet_delete.html', {'pet': pet})

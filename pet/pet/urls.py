@@ -28,6 +28,10 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('pet', singlepet, name="Single-Pet"),
+
+    path('pets/create/', pet_create, name='pet_create'),
+    path('pets/<int:pk>/update/', pet_update, name='pet_update'),
+    path('pets/<int:pk>/delete/', pet_delete, name='pet_delete'),
 ]
 
 if settings.DEBUG:
