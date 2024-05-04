@@ -1,5 +1,19 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+from django.conf import settings
+
+class CustomUser(AbstractUser):
+    full_name = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=15)  # Assuming phone numbers are strings
+    
+    # Add any additional fields or methods as needed
+
+    def __str__(self):
+        return self.username
 
 class Pet(models.Model):
     SPECIES_CHOICES = (
@@ -43,9 +57,9 @@ class Pet(models.Model):
         ('special_needs', 'Special Needs'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="poster")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="poster")
     is_adopted = models.BooleanField(default=False)
-    adopted_by = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="adopter")
+    adopted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, related_name="adopter")
     species = models.CharField(max_length=20, choices=SPECIES_CHOICES)
     name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100, blank=True, null=True)
@@ -72,6 +86,5 @@ class Pet(models.Model):
     eye_color = models.CharField(max_length=50, blank=True, null=True)
     weight = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     health_status = models.CharField(max_length=20, choices=HEALTH_CHOICES, default='healthy')
-
     def __str__(self):
         return self.name

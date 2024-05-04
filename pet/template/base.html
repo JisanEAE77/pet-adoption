@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Pet Adoption{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     {% block head %}
     {% endblock %}
 
@@ -31,8 +31,15 @@
     </nav>
     <div class="user-menu">
         <ul>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
+            {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            {% endif %}
         </ul>
     </div>
 </header>
