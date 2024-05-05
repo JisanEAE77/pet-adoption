@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto py-8 flex flex-col items-center">
+    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-8">
+        <div class="flex flex-col items-center pb-10 pt-10">
+            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ user.full_name }}</h5>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Contact No: {{ user.phone_number }}</span>
+            <div class="flex mt-4 md:mt-6">
+                <a href="/pets/create/" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Post</a>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4">Adoption Posts</h2>
+
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for pet in user.poster.all %}
+        <li class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative pb-48 overflow-hidden">
+                <img
+                class="absolute inset-0 h-full w-full object-cover"
+                src="{{ pet.photo.url }}"
+                alt="{{ pet.name }}"
+                />
+            </div>
+            <div class="flex justify-center gap-3 py-4 r-4">
+                <a href="/pets/{{pet.pk}}/update" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg ">Update</a>
+                <a href="/pets/{{pet.pk}}/delete" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg ">Delete</a>
+            </div>
+            <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">{{ pet.name }}</h3>
+                <p class="text-gray-600 mb-2">Breed: {{ pet.breed }}</p>
+                <p class="text-gray-600 mb-2">Age: {{ pet.age }}</p>
+                <p class="text-gray-600 mb-2">Gender: {{ pet.get_gender_display }}</p>
+                <p class="text-gray-600 mb-2">Size: {{ pet.get_size_display }}</p>
+                {% if pet.behavior %}
+                <p class="text-gray-600 mb-2">Behavior: {{ pet.get_behavior_display }}</p>
+                {% endif %}
+                <p class="text-gray-600 mb-2">Description: {{ pet.description }}</p>
+                <p class="text-gray-600 mb-2">Adoption Fee: {{ pet.adoption_fee }}</p>
+                <p class="text-gray-600 mb-2">Location: {{ pet.location }}</p>
+                <p class="text-gray-600 mb-2">
+                Vaccinated: {{ pet.vaccinated|yesno:"Yes,No" }}
+                </p>
+                <p class="text-gray-600 mb-2">
+                Dewormed: {{ pet.dewormed|yesno:"Yes,No" }}
+                </p>
+                <p class="text-gray-600 mb-2">
+                Neutered/Spayed: {{ pet.neutered_spayed|yesno:"Yes,No" }}
+                </p>
+                <p class="text-gray-600 mb-2">
+                Microchipped: {{ pet.microchipped|yesno:"Yes,No" }}
+                </p>
+                <p class="text-gray-600 mb-2">
+                Friendly with Kids: {{ pet.friendly_with_kids|yesno:"Yes,No" }}
+                </p>
+                <p class="text-gray-600 mb-2">
+                Friendly with Dogs: {{ pet.friendly_with_dogs|yesno:"Yes,No" }}
+                </p>
+                <p class="text-gray-600 mb-2">
+                Friendly with Cats: {{ pet.friendly_with_cats|yesno:"Yes,No" }}
+                </p>
+                {% if pet.special_needs %}
+                <p class="text-gray-600 mb-2">Special Needs: {{ pet.special_needs }}</p>
+                {% endif %} {% if pet.color %}
+                <p class="text-gray-600 mb-2">Color: {{ pet.color }}</p>
+                {% endif %} {% if pet.coat_length %}
+                <p class="text-gray-600 mb-2">Coat Length: {{ pet.coat_length }}</p>
+                {% endif %} {% if pet.eye_color %}
+                <p class="text-gray-600 mb-2">Eye Color: {{ pet.eye_color }}</p>
+                {% endif %} {% if pet.weight %}
+                <p class="text-gray-600 mb-2">Weight: {{ pet.weight }} kg</p>
+                {% endif %}
+                <p class="text-gray-600 mb-2">
+                Health Status: {{ pet.get_health_status_display }}
+                </p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

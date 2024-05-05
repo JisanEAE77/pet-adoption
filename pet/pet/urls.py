@@ -32,6 +32,9 @@ urlpatterns = [
     path('pets/create/', pet_create, name='pet_create'),
     path('pets/<int:pk>/update/', pet_update, name='pet_update'),
     path('pets/<int:pk>/delete/', pet_delete, name='pet_delete'),
+
+    path('profile/self/', self_profile_view, name='self_profile'),
+    path('profile/<str:username>/', profile_view, name='profile'),
 ]
 
 if settings.DEBUG:

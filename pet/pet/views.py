@@ -3,8 +3,9 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.forms import  AuthenticationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 
-from .models import Pet
+from .models import Pet,CustomUser
 from .forms import PetForm
 
 def index(request, *args, **kwargs):
@@ -53,8 +54,7 @@ def pet_create(request):
             pet = form.save(commit=False)
             pet.user = request.user
             pet.save()
-            # return redirect('pet_detail', pk=pet.pk)
-            return redirect('/')
+            return redirect('/profile/self/')
     else:
         form = PetForm()
     return render(request, 'pet_create.html', {'form': form})
@@ -65,8 +65,7 @@ def pet_update(request, pk):
         form = PetForm(request.POST, request.FILES, instance=pet)
         if form.is_valid():
             form.save()
-            # return redirect('pet_detail', pk=pet.pk)
-            return redirect('/')
+            return redirect('/profile/self/')
     else:
         form = PetForm(instance=pet)
     return render(request, 'pet_update.html', {'form': form})
@@ -75,5 +74,24 @@ def pet_delete(request, pk):
     pet = get_object_or_404(Pet, pk=pk, user=request.user)
     if request.method == 'POST':
         pet.delete()
-        return redirect('/')
+        return redirect('/profile/self/')
     return render(request, 'pet_delete.html', {'pet': pet})
+
+def profile_view(request, username):
+    user = get_object_or_404(CustomUser, username=username)
+    pets = Pet.objects.filter(user=user)
+    context = {
+        'user': user,
+        'pets': pets,
+    }
+    return render(request, 'profile.html', context)
+
+@login_required
+def self_profile_view(request):
+    user = request.user
+    pets = Pet.objects.filter(user=user)
+    context = {
+        'user': user,
+        'pets': pets,
+    }
+    return render(request, 'self_profile.html', context)

@@ -31,10 +31,13 @@
         </nav>
         <div class="user-menu">
             {% if user.is_authenticated %}
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button class="btn" type="submit">Logout</button>
-                </form>
+                <div class="flex justify-content-center gap-3 ">
+                    <a href="/profile/self/" class="btn" type="submit">Profile</a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn" type="submit">Logout</button>
+                    </form>
+                </div>
             {% else %}
             <a href="/login" class="btn">Login</a>
             <a href="/register" class="btn">Register</a>
