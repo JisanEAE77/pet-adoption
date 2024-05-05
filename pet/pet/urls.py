@@ -35,6 +35,8 @@ urlpatterns = [
 
     path('profile/self/', self_profile_view, name='self_profile'),
     path('profile/<str:username>/', profile_view, name='profile'),
+
+    path('pets/all/', all_pets_view, name='all_pets'),
 ]
 
 if settings.DEBUG:

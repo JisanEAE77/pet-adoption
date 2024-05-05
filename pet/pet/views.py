@@ -95,3 +95,10 @@ def self_profile_view(request):
         'pets': pets,
     }
     return render(request, 'self_profile.html', context)
+
+def all_pets_view(request):
+    all_pets = Pet.objects.order_by('-date_posted')
+    context = {
+        'all_pets': all_pets,
+    }
+    return render(request, 'all_pets.html', context)
