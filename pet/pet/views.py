@@ -4,12 +4,17 @@ from django.contrib.auth.forms import  AuthenticationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from .models import Pet
 
 from .models import Pet,CustomUser
 from .forms import PetForm
 
 def index(request, *args, **kwargs):
-    return render(request, "index.html")
+    pets = Pet.objects.all()[:8]
+    context = {
+        'pets': pets,
+    }
+    return render(request, "index.html", context)
 
 def register_view(request):
     errors = None
@@ -44,8 +49,14 @@ def logout_view(request):
         logout(request)
         return redirect('/')
     
-def singlepet(request, *args, **kwargs):
-    return render(request, "singlepet.html")
+def singlepet(request, id):
+    pet = Pet.objects.get(id=id)
+
+    context = {
+        'pet': pet,
+    }
+
+    return render(request, "singlepet.html", context)
 
 def pet_create(request):
     if request.method == 'POST':
@@ -102,3 +113,22 @@ def all_pets_view(request):
         'all_pets': all_pets,
     }
     return render(request, 'all_pets.html', context)
+
+def adopt(request, id):
+    pet = Pet.objects.get(id=id)
+
+    pet.adopted_by = request.user
+    pet.is_adopted = True
+
+    pet.save()
+
+    return redirect('/myadoption')
+
+def myadoptions(request, *args, **kwargs):
+    all_pets = Pet.objects.filter(adopted_by=request.user.id)
+
+    context = {
+        "all_pets": all_pets,
+    }
+
+    return render(request, "myadoptions.html", context)

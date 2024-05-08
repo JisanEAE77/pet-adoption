@@ -7,7 +7,10 @@
 {% endblock %}
 {% block content %}
 <div class="pet-details-container">
-    <h1 class="pet-title">{{ pet.name }}</h1>
+    <h1 class="pet-title" style="font-weight: bold; font-size: 34px;">{{ pet.name }}</h1>
+    <div class="pet-image">
+        <img src="{{ pet.photo.url }}" alt="Pet Image">
+    </div>
     <div class="pet-info">
         <div class="table-container">
             <h2 class="table-title">Pet Details</h2>
@@ -110,16 +113,19 @@
                 </tbody>
             </table>
         </div>
-        <div class="pet-image">
-            <img src="{{ pet.image.url }}" alt="Pet Image">
-        </div>
+        
     </div>
     {% if pet.is_adopted %}
     <p><strong>Status:</strong> Adopted</p>
-    <p><strong>Adopted By:</strong> {{ pet.adopted_by.username }}</p>
+    <p><strong>Adopted By:</strong> {{ pet.adopted_by.full_name }}</p>
     {% else %}
     <p><strong>Status:</strong> Available for Adoption</p>
-    <a href="#" class="btn">Adopt {{ pet.name }}</a>
+        {% if request.user.is_authenticated %}
+        <a href="/adopt/{{pet.id}}" class="btn">Adopt {{ pet.name }}</a>
+        {% else %}
+        <a href="/login" class="" style="color: blue">Login to your acccount to adopt the pet!</a> 
+
+        {% endif %}
     {% endif %}
 </div>
 {% endblock %}

@@ -22,21 +22,25 @@
 
 <section id="adoption-posts" class="adoption-posts">
     <h2>Latest Adoption Posts</h2>
+    <div class="flex">
+    {% for pet in pets %}
     <div class="adoption-cards">
         <!-- Adoption post cards -->
         <!-- Sample card -->
         <div class="adoption-card">
-            <img src="https://via.placeholder.com/300" alt="Pet Image">
+            <img src="{{pet.photo.url}}" alt="Pet Image" style="max-width: 600px; max-width: 300px;">
             <div class="card-content">
-                <h3>Adorable Puppy Needs a Home</h3>
-                <p>Age: 1 year | Gender: Female | Breed: Labrador Retriever</p>
-                <a href="#" class="btn">View Details</a>
+                <h3>{{pet.name}}</h3>
+                <p>Age: {{pet.age}} year | Gender: {{pet.gender}} | Breed: {{pet.breed}}</p>
+                <a href="/pet/{{pet.id}}" class="btn">View Details</a>
             </div>
         </div>
         <!-- Repeat the above adoption card structure for each post -->
         <!-- Limit the number of cards to 10 -->
     </div>
-    <a href="#" class="btn see-more">See More</a>
+    {% endfor %}
+    </div>
+    <a href="/pets/all" class="btn see-more">See More</a>
 </section>
 
 <section class="pet-care-section">
